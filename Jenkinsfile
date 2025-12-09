@@ -13,8 +13,8 @@ pipeline {
         stage ('Set up .NET Core') {
             steps {
                 bat '''
-                echo Setting up .NET 8.0 SDK
-                choco install dotnet-8.0-sdk -y
+                echo Checking .NET SDK installation...
+                dotnet --info
                 '''
             }
         }
@@ -22,8 +22,8 @@ pipeline {
         stage ('Restore dependencies') {
             steps {
                 bat '''
-                echo Restoring .NET dependencies
-                dotnet restore
+                echo Restoring project dependencies...
+                dotnet restore SeleniumIde.sln
                 '''
             }
         }
